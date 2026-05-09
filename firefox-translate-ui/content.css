@@ -1,0 +1,113 @@
+/* ---- Bekleyen elementler (sağ panelde) ---- */
+/* visibility:hidden → içerik gizli ama yükseklik korunur */
+#tgemma-right-panel .tgemma-pending {
+  visibility: hidden;
+  position: relative;
+}
+
+/* Çok hafif placeholder göstergesi */
+#tgemma-right-panel .tgemma-pending::after {
+  content: '';
+  visibility: visible;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(128, 128, 128, 0.04);
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+/* ---- Çevrilen elementler (sağ panel) ---- */
+#tgemma-right-panel .tgemma-translated {
+  cursor: help;
+  animation: tgemma-appear 0.3s ease;
+}
+
+@keyframes tgemma-appear {
+  from { opacity: 0.4; }
+  to { opacity: 1; }
+}
+
+/* ---- Sol panel hover vurgulama ---- */
+[data-tgemma-hover="true"] {
+  background-color: rgba(96, 165, 250, 0.2) !important;
+  outline: 2px solid rgba(96, 165, 250, 0.4);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* ---- Sağ panel hover vurgulama ---- */
+[data-tgemma-id].tgemma-hover-translation {
+  background-color: rgba(52, 211, 153, 0.2) !important;
+  outline: 2px solid rgba(52, 211, 153, 0.4);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* ---- Tooltip ---- */
+#tgemma-tooltip {
+  position: fixed;
+  z-index: 2147483647;
+  background: #1e293b;
+  color: #f1f5f9;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 420px;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+  display: none;
+  word-wrap: break-word;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+#tgemma-tooltip::before {
+  content: "Orijinal";
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+  margin-bottom: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #334155;
+}
+
+/* ---- Durum Göstergesi ---- */
+#tgemma-status {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 2147483647;
+  background: #1e293b;
+  color: #e2e8f0;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+#tgemma-status .tgemma-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #475569;
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: tgemma-spin 0.8s linear infinite;
+}
+
+@keyframes tgemma-spin {
+  to { transform: rotate(360deg); }
+}
+
+#tgemma-right-panel .tgemma-wrapped {
+  margin: 0;
+  padding: 0;
+}
