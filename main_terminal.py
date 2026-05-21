@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from common_huggingface import Translator
+from common_openai import Translator
 
 
 @dataclass
